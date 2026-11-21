@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{braket}
+\title{Notes on Morse Homology}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\begin{document}
+	\maketitle
+	
+	\section{Floer-Gromov}
+	We want to show the Floer-Gromov compactness theorem, meaning that a sequence
+	of gradient flow lines always has a convergent subsequence if they are allowed
+	to also converge against broken gradient flow lines.
+	We know $M(x^-,x^+)$ is not compact. We shall construct $M_\sigma(x^-,x^+)$
+	which will be compact and correspond to the space of broken gradient flow lines.
+	
+	Define $\sigma: M \to \mathbb{R}$ with $x \mapsto \frac d {dt} \Phi_{\nabla f}^t f (x)$.
+	Given a gradient flow line $x: \mathbb{R} \to M$ with $\partial_t x(s) + \nabla f (x(s)) = 0$
+	we can define a canonical reparametrisation using $(f \circ x)^{-1}: \mathbb{R} \to \mathbb{R}$.
+	Now $x_\sigma \coloneq x((f \circ x)^{-1})$ satisfies $f \circ x_\sigma = id$ and
+	$\sigma \cdot \partial_s x_\sigma + \nabla f = 0$.
+	
+	Define $f^{\pm} \coloneq f(x^{\pm})$ and
+	\begin{align*}
+		M_\sigma(x^-,x^+) \coloneq \set{ x_\sigma \in C^0([f^-,f^+],M) \mid x_\sigma(f^\pm) = x^\pm \text{ and } \sigma \partial_s x_\sigma + \nabla f = 0}
+	\end{align*}
+	The second condition implies that all $x_\sigma$ must be differentiable if $\sigma \neq 0$.
+	We also know that
+	\begin{align*}
+		f(x_\sigma(s)) 	&= f^- + \int_{f^-}^{s} \nabla f \cdot x_\sigma' ds \\
+				&= f^- + \int_{f^-}^{s} \frac 1 \sigma \nabla f \cdot \nabla f ds \\
+				&= f^- + s - f^- = s \\
+	\end{align*}
+	(Note: Not yet shown)
+	If $x_\sigma(s)$ is not differentiable, then $\sigma(x_\sigma(s)) = 0$ and
+	$x_\sigma(s) \in \text{crit}(f)$. Everywhere else $x_\sigma$ satisfies
+	the rescaled gradient flow equation and hence is a broken gradient flow line.
+	The computation earlier shows also that every element of $M(x^-,x^+)$
+	has a corresponding element of $M_\sigma(x^-,x^+)$.
+
+	Now all that remains to be shown is that $M_\sigma(x^-,x^+)$ with the topology
+	of uniform convergence is compact. Let $x_\nu$ be an arbitrary family of
+	functions in $M_\sigma$. We know all $x_\nu$ are uniformly bounded because
+	$M$ is compact. We also know that all $x_\nu$ must be Lipschitz continuous
+	because they are differentiable on a cofinite set and their derivatives
+	are given by $\frac 1 \sigma \nabla f$. Arzelà-Ascoli now guarantees
+	that there exists a subsequence $x_\rho \in (x_\nu)$ and a $x \in C([f^-,f^+], M)$ with
+	$|x - x_\rho| \to 0$ for $\rho \to \infty$. This guarantees that
+	$x(f^\pm) = x^\pm$. Now let $s \in [f^-,f^+]$ with $\sigma(x(s)) \neq 0$.
+	To see that $x$ is differentiable at $s$, note that $\frac 1 \sigma \nabla f$
+	is continuous around $x(s)$ and hence $x_\rho'$ converges uniformly to
+	$x'$ locally at $s$. This also implies $\sigma \partial_s x + \nabla f = 0$.
+	
+	%\section{$\Omega = S^1$}
+	%In this section we want to show that the $\Omega$-limit sets of a gradient
+	%flow line are always either a single point or a smooth $S^1$.
+	%The $\Omega$-limit set is defined as
+	%\begin{align*}
+	%	\Omega \coloneq \set{x_0 \in M \mid \exists x_i \text{ subsequence of } x \text{ with } x_i \to x_0 }
+	%\end{align*}
+	%First let us note that $\Omega$ is non-empty because $M$ is compact and must
+	%have a convergent subsequence. Denote this special point by $x_0$. Now define
+	%\begin{align*}
+	%	\sigma(x) \coloneq \lVert \nabla f(x) \rVert_g
+	%\end{align*}
+	%We can now reparameterise $x$ such that it satisfies the following rescaled
+	%gradient flow equation
+	%\begin{align*}
+	%	\sigma \partial \bar x + \nabla f = 0
+	%\end{align*}
+	
+	%For the next step we need a special subsequence. Denote this by
+	%$t_i \in \mathbb{R}$ with $t_i < t_j$ for $i < j$. We also require that
+	%$x(t_i) \to x_0$ for $i \to \infty$. Define $x_i: [0,1] \to M$ by
+	%\begin{align*}
+	%	s \mapsto \bar x(s t_i + (1-s) t_{i+1})
+	%\end{align*}
+	%Gronwall's lemma guarantees that $x_i$ is uniformly cauchy for $i \to \infty$. (For this we require that $t_{i+1} - t_i \to \text{some constant}$)
+\end{document}
