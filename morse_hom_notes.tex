@@ -8,6 +8,11 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{5pt}
 
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\img}{img}
+\newcommand*{\qed}{\hfill\ensuremath{\square}}
+
 \begin{document}
 	\maketitle
 	
@@ -55,56 +60,56 @@
 	is continuous around $x(s)$ and hence $x_\rho'$ converges uniformly to
 	$x'$ locally at $s$. This also implies $\sigma \partial_s x + \nabla f = 0$.
 	
-	%\section{$\Omega = S^1$}
-	%In this section we want to show that the $\Omega$-limit sets of a gradient
-	%flow line are always either a single point or a smooth $S^1$.
-	%The $\Omega$-limit set is defined as
-	%\begin{align*}
-	%	\Omega \coloneq \set{x_0 \in M \mid \exists x_i \text{ subsequence of } x \text{ with } x_i \to x_0 }
-	%\end{align*}
-	%First let us note that $\Omega$ is non-empty because $M$ is compact and must
-	%have a convergent subsequence. Denote this special point by $x_0$. Now define
-	%\begin{align*}
-	%	\sigma(x) \coloneq \lVert \nabla f(x) \rVert_g
-	%\end{align*}
-	%We can now reparameterise $x$ such that it satisfies the following rescaled
-	%gradient flow equation
-	%\begin{align*}
-	%	\sigma \partial \bar x + \nabla f = 0
-	%\end{align*}
+	\section{A complete classification of $\alpha$-/$\omega$-Limit Sets}
+	Let $(M,g)$ be a Riemmanian Manifold and $\gamma: \mathbb R \to M$ a
+	continuous function. Then the $\alpha$-/$\omega$-Limit Set of $\gamma$
+	is defined as
+	\begin{align*}
+		\alpha &\coloneq \set{x \in M \mid \exists (t_n)_{n\in \mathbb N} \text{ with} \lim_{n \to \infty} t_n = -\infty \text{ and} \lim_{n \to \infty} \gamma(t_n) = x} \\
+		\omega &\coloneq \set{x \in M \mid \exists (t_n)_{n\in \mathbb N} \text{ with} \lim_{n \to \infty} t_n = \phantom -\infty \text{ and} \lim_{n \to \infty} \gamma(t_n) = x} \\
+	\end{align*}
 	
-	%For the next step we need a special subsequence. Denote this by
-	%$t_i \in \mathbb{R}$ with $t_i < t_j$ for $i < j$. We also require that
-	%$x(t_i) \to x_0$ for $i \to \infty$. Define $x_i: [0,1] \to M$ by
-	%\begin{align*}
-	%	s \mapsto \bar x(s t_i + (1-s) t_{i+1})
-	%\end{align*}
-	%Gronwall's lemma guarantees that $x_i$ is uniformly cauchy for $i \to \infty$. (For this we require that $t_{i+1} - t_i \to \text{some constant}$)
+	In this section we now want to show that the possible $\alpha$ and $\omega$
+	are precisely the closed and connected sets. We also want to show that
+	the $\alpha$ and $\omega$ sets of continuous functions are the same
+	as those for smooth functions, functions given as the flow of some smooth vector
+	field and functions given as gradient flow lines of some smooth function.
 	
-	%\section{(Almost) All smooth paths are gradient flow lines}
-	%For $(M,g)$ an arbitrary Riemannian Manifold and $\gamma: \mathbb R \to M$
-	%a smooth path we want to show that $\gamma$ is a gradient flow line iff
-	%$\gamme$ is a homeomorphism to its image.
+	To get this process started we want to first note that all $\omega$-Limit
+	sets (and hence also all $\alpha$-Limit sets) are closed and connected
+	(at least if $M$ is compact).
 	
+	Now we shall prove that all closed and connected sets $A \subset M$
+	are the $\omega$-Limit of some continuous $\gamma$. For this remember
+	that open connected sets of $\mathbb R^n$ are always also path-connected.
+	Now let $(q_n)$ be some countable dense subset of $A$. We can connect these
+	points by looking at the sets $B_{\frac 1 n}(A)$, which are open. The 
+	connected component of $A$ is hence also path-connected. For each 
+	$n \in \mathbb N$ we now take some path $p_n: [0,1] \to B_{\frac 1 n}(A)$ with
+	$p_n(0) = q_n$, $p_n(1) = q_{n+1}$. We can now stitch these together to
+	form $p(n + t) = p_n(t)$, which satisfies
 	\begin{align*}
-		\varphi(s,u) = \exp_{\gamma(s)}(u)
+		\lim_{t \to\infty} \dist(p(t), A) = 0
 	\end{align*}
+	This now satisfies $\omega(p) = A$. \qed
+	
+	Next we want to show that for continuous $\gamma$ we can construct
+	smooth $\Gamma$ with $\alpha(\gamma) = \alpha(\Gamma)$ and
+	$\omega(\gamma) = \omega(\Gamma)$. For these we will use mollifiers
+	$m_\varepsilon$ with $\supp(m_\varepsilon) \subset (-\varepsilon,\varepsilon)$.
+	Now define the open cover of $\mathbb R$ by $U_z \coloneq (z-1,z+1)$ for $z \in \mathbb Z$.
+	Since $\mathbb R$ is compact it follows that there exists a partition of unity
+	$\rho_z$ with $\supp(\rho_z) \subset U_z$. Let us now also make the simplifying
+	assumption that $M = \mathbb R^n$, as otherwise we would have to factor in 
+	charts in the following computation:
 	\begin{align*}
-		\rho_i: \mathbb R \to \mathbb R
+		\Gamma(x) \coloneq \sum_{z \in \mathbb Z} \rho_z(x) \cdot (m_{\frac 1 {|z|}} \ast \gamma)(x)
 	\end{align*}
-	\begin{align*}
-		\sum \rho_i = 1
-	\end{align*}
-	\begin{align*}
-		w(s) \coloneq \sum \rho_i(s) \cdot \delta_i
-	\end{align*}
-	\begin{align*}
-		h(s) \coloneq \exp\left(-s^2\right)
-	\end{align*}
-	\begin{align*}
-		b(x) \coloneq \exp\left( -\frac 1 {1-x^2} \right)
-	\end{align*}
-	\begin{align*}
-		f(s,u) \coloneq h(s) \cdot b\left( \frac{\lVert u \rVert} {w(s)} \right)
-	\end{align*}
+	This is now a smooth function with the same limiting behavior as $\gamma$.
+	\qed
+	
+	The next step is to look at functions which are given as the flow of some vector field.
+	For this we will show that all smooth $\Gamma: \mathbb R \to M$
+	with $\Gamma'(t) \neq 0$ for all $t \in \mathbb R$ and $\Gamma'$ continuous
+	as function from $\img(\Gamma)$ to $TM$
 \end{document}
