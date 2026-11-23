@@ -110,6 +110,33 @@
 	
 	The next step is to look at functions which are given as the flow of some vector field.
 	For this we will show that all smooth $\Gamma: \mathbb R \to M$
-	with $\Gamma'(t) \neq 0$ for all $t \in \mathbb R$ and $\Gamma'$ continuous
-	as function from $\img(\Gamma)$ to $TM$
+	with $\Gamma'(t) \neq 0$ for all $t \in \mathbb R$ and $\Gamma'$ well-defined
+	and continuous as a function from $\overline{\img(\Gamma)}$ to $TM$. A counterexample
+	to the second condition would be for example $\Gamma(t) = \exp(i\exp(t))$.
+	The vector field on $\overline{\img(\Gamma)}$ must now be defined as
+	\begin{align*}
+		V(x) \coloneq \Gamma'(\Gamma^{-1}(x))
+	\end{align*}
+	We can now choose an arbitrary extension of $V$ to the whole Manifold.
+	So not every smooth function is a flow, but if we modify it a bit
+	we can still show that the $\omega$-Limits of smooth functions
+	are the same as those of flows. For this let us go up by one dimension and define
+	\begin{align*}
+		\Gamma_1(t) \coloneq (\arctan(t), \Gamma(t)) \in \mathbb R \times M
+	\end{align*}
+	This function now satisfies $\Gamma_1'(t) \neq 0$ and
+	\begin{align*}
+		\alpha(\Gamma_1) &= \set{-\frac \pi 2} \times \alpha(\Gamma)		\\
+		\omega(\Gamma_1) &= \set{\phantom -\frac \pi 2} \times \omega(\Gamma)  	\\
+	\end{align*}
+	\textsc{Continuity of $\Gamma'$ requires a different construction. Something to make
+	$Gamma'$ converge to $0$.}
+	
+	Lastly we also want to understand which flow lines are given as
+	gradient flow lines of some smooth $f: M \to \mathbb R$. Here
+	we will show that if $\Gamma$ is a homeomorphism/diffeomorphism to
+	its image, then there exists such an $f$ with $\Gamma' = \nabla f$
+	(opposite notation to lecture). 
+	
+	\textsc{Better: $\Gamma^{-1}$ is well-defined and continuous on $\overline{\img{\Gamma}}$} 
 \end{document}
