@@ -18,7 +18,7 @@
 	We know $M(x^-,x^+)$ is not compact. We shall construct $M_\sigma(x^-,x^+)$
 	which will be compact and correspond to the space of broken gradient flow lines.
 	
-	Define $\sigma: M \to \mathbb{R}$ with $x \mapsto \frac d {dt} \Phi_{\nabla f}^t f (x)$.
+	Define $\sigma: M \to \mathbb{R}$ with $x \mapsto \lVert \nabla f(x) \rVert $.
 	Given a gradient flow line $x: \mathbb{R} \to M$ with $\partial_t x(s) + \nabla f (x(s)) = 0$
 	we can define a canonical reparametrisation using $(f \circ x)^{-1}: \mathbb{R} \to \mathbb{R}$.
 	Now $x_\sigma \coloneq x((f \circ x)^{-1})$ satisfies $f \circ x_\sigma = id$ and
@@ -80,4 +80,31 @@
 	%	s \mapsto \bar x(s t_i + (1-s) t_{i+1})
 	%\end{align*}
 	%Gronwall's lemma guarantees that $x_i$ is uniformly cauchy for $i \to \infty$. (For this we require that $t_{i+1} - t_i \to \text{some constant}$)
+	
+	%\section{(Almost) All smooth paths are gradient flow lines}
+	%For $(M,g)$ an arbitrary Riemannian Manifold and $\gamma: \mathbb R \to M$
+	%a smooth path we want to show that $\gamma$ is a gradient flow line iff
+	%$\gamme$ is a homeomorphism to its image.
+	
+	\begin{align*}
+		\varphi(s,u) = \exp_{\gamma(s)}(u)
+	\end{align*}
+	\begin{align*}
+		\rho_i: \mathbb R \to \mathbb R
+	\end{align*}
+	\begin{align*}
+		\sum \rho_i = 1
+	\end{align*}
+	\begin{align*}
+		w(s) \coloneq \sum \rho_i(s) \cdot \delta_i
+	\end{align*}
+	\begin{align*}
+		h(s) \coloneq \exp\left(-s^2\right)
+	\end{align*}
+	\begin{align*}
+		b(x) \coloneq \exp\left( -\frac 1 {1-x^2} \right)
+	\end{align*}
+	\begin{align*}
+		f(s,u) \coloneq h(s) \cdot b\left( \frac{\lVert u \rVert} {w(s)} \right)
+	\end{align*}
 \end{document}
